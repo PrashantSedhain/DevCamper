@@ -1,5 +1,15 @@
 const mongoose = require('mongoose');
-NONGO_URI = mongodb+srv://prashant:prashant123@cluster0-tmtmt.mongodb.net/test?retryWrites=true&w=majority
+mongoose.Promise = global.Promise
+
+
 const connectDB = async () => {
-    const conn =  mongoose.connect()
+    const conn =  await mongoose.connect(process.env.MONGO_URI, {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useFindAndModify: false,
+        useUnifiedTopology: true
+    });
+    console.log(`MongoDB Connected: ${conn.connection.host}`)
 }
+
+module.exports = connectDB;
