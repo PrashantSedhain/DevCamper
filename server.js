@@ -38,6 +38,9 @@ const server = app.listen(PORT, () => {
   );
 });
 
+// The code below is written to exit the program if any unhandled rejection happens in the project.
+
+
 //Handle Unhandled promise rejections
 process.on('unhandledRejection', (err, promise) => {
   console.log(`Error: ${err.message}`);
